@@ -5,15 +5,27 @@ import {
   IonApp,
   IonContent,
   IonHeader,
-  IonImg
+  IonImg,
 } from '@ionic/react';
 import FormCard from './FormCard';
 import TaskCard from './TaskCard';
+import LoginForm from './LoginForm';
 import Logo from './images/logo_pills.svg';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    isLogin: false,
+    openLoginForm: false
+  };
+
+  componentDidMount = () => {
+    if (!this.state.isLogin) setTimeout(() => this.setState({openLoginForm: true}), 300);
+  };
+
   render() {
+    const { openLoginForm } = this.state;
     return (
       <IonApp>
         <IonContent class="App-container">
@@ -26,6 +38,7 @@ class App extends Component {
             <TaskCard title="Неполадки с принтером" text="Закончился черный и цветной картириджи."/>
             <TaskCard title="Операционная система" text="Необходимо переустановаить ОС."/>
           </div>
+          <LoginForm open={ openLoginForm } />
         </IonContent>
       </IonApp>
     );

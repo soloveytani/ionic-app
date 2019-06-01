@@ -84,3 +84,28 @@
   color: #ffffff;
   font-size: 20px;
 }
+
+.App-login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 30px);
+  margin-top: 50%;
+  margin-left: 50%;
+  transform: translateX(-50%) translateY(10%);
+}
+
+.App-login-input {
+  width: 100%;
+  margin-right: 12px;
+}
+
+.App-login-image {
+  height: 70px;
+  margin-left: 30px;
+}
+
+.App-login-button {
+  margin-top: 26px;
+}
