@@ -7,13 +7,34 @@ class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
+            login: '',
+            password: ''
         };
     };
 
     componentDidUpdate = (prevProps) => {
         if (this.props.open !== this.state.open && this.props.open !== prevProps.open) 
             this.setState({ open: this.props.open });
+    };
+
+    handleChange = (name) => (event) => {
+        this.setState({ [name]: event.target.value });
+    };
+
+    onLoginButton = () => {
+        fetch(`https://tatiana-backend.herokuapp.com/sessions`,{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({"auth":{"login": this.state.login ,"password": this.state.password}})
+        }).then(result => result.json())
+        .then((result) => {
+            this.props.onLogin(result.jwt);
+            this.setState({ open: false })
+        }).catch(err => console.error(err));
     };
 
     render() {
@@ -27,13 +48,13 @@ class LoginForm extends Component {
                     <IonImg src={ Logo } class="App-login-image"></IonImg>
                     <IonItem class="App-login-input">
                         <IonLabel position="floating">Логин</IonLabel>
-                        <IonInput></IonInput>
+                        <IonInput onIonChange={ this.handleChange('login') }></IonInput>
                     </IonItem>
                     <IonItem class="App-login-input">
                         <IonLabel position="floating">Пароль</IonLabel>
-                        <IonInput></IonInput>
+                        <IonInput type="password" onIonChange={ this.handleChange('password') }></IonInput>
                     </IonItem>
-                    <IonButton onClick={() => this.setState(() => ({ open: false }))} class="App-login-button">
+                    <IonButton onClick={ this.onLoginButton } class="App-login-button">
                         Войти
                     </IonButton>
                 </div>
