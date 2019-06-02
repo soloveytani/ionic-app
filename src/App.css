@@ -66,6 +66,11 @@
   width: 50px;
 }
 
+.App-add-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .App-main-content {
   margin-top: 140px;
 }
@@ -74,6 +79,21 @@
   background-color: #5B7DEB;
   color: #ffffff;
   box-shadow: 0 4px 16px rgba(0,0,0,.4);
+  /* transition: height 1s linear; */
+  min-height: 160px;
+}
+
+.App-task-card .App-select-container  {
+  --background: #5B7DEB;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.App-task-card  .ion-md-close {
+  font-size: 20px;
+  line-height: 20px;
+  margin-left: calc(100% - 20px);
+  margin-bottom: 8px;
 }
 
 .App-task-date {
@@ -83,6 +103,30 @@
 .App-task-title {
   color: #ffffff;
   font-size: 20px;
+}
+
+.App-task-status {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 10px;
+}
+
+.App-task-full-status {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
+.App-save-button {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.App-delete-button {
+  margin-left: calc(100% - 180px);
+  margin-top: 10px;
 }
 
 .App-login-container {
