@@ -6,7 +6,9 @@ import {
     IonContent,
     IonHeader,
     IonImg,
-    IonToast
+    IonToast,
+    IonButton,
+    IonIcon
 } from '@ionic/react';
 import FormCard from './FormCard';
 import TaskCard from './TaskCard';
@@ -94,6 +96,11 @@ class App extends Component {
     setUserToken = (token) => {
         this.setState({ token: token });
         localStorage.setItem('token', token);
+        setTimeout(() => this.setState({openLoginForm: false}), 300);
+    };
+
+    logOut = () => {
+        setTimeout(() => this.setState({openLoginForm: true}), 300);
     };
 
     render() {
@@ -104,6 +111,9 @@ class App extends Component {
                     <IonHeader class="App-header">
                         <IonImg src={ Logo } class="App-logo"></IonImg>
                         <p className="App-title">Ваши заявки</p>
+                        <IonButton class="App-log-out" onClick={ this.logOut }>
+                            <IonIcon slot="icon-only" name="log-out" />
+                        </IonButton>
                     </IonHeader>
                     <FormCard handleSubmit={ this.createUpdateIssue }/>
                     <div className="App-main-content">

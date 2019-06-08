@@ -28,6 +28,13 @@
   font-weight: 700;
 }
 
+.App-log-out {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  --background: transparent;
+}
+
 .App-form {
   position: absolute;
   top: 70px;

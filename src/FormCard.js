@@ -38,10 +38,21 @@ class FormCard extends Component {
         this.setState({ issue: {...this.state.issue, [fieldName]: event.target.value} });
     };
 
+    handleSubmit = () => {
+        this.props.handleSubmit(this.state.issue)();
+        this.setState({
+            issue: {
+                related_to: '0',
+                commentary: '', 
+                priority: 'normal',
+                status: 'needToDo'
+            }
+        });
+    };
+
     render() {
 
         const { issue } = this.state;
-        const { handleSubmit } = this.props;
 
         return (
             <IonCard class="App-form">
@@ -73,7 +84,7 @@ class FormCard extends Component {
                                 value={ issue.commentary }
                                 onIonChange={ this.handleChange('commentary') } />
                         </IonItem>
-                        <IonImg src={ PlusIcon } class="App-add-button" onClick={ handleSubmit(issue) }></IonImg>
+                        <IonImg src={ PlusIcon } class="App-add-button" onClick={ this.handleSubmit }></IonImg>
                     </IonCardContent>
                 </div>
             </IonCard>

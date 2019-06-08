@@ -59,7 +59,7 @@ class TaskCard extends Component {
                     <IonCardHeader>
                         <IonCardSubtitle class="App-task-date">{ issue.created_at }</IonCardSubtitle>
                         <IonBadge class="App-task-status"
-                            color={ issue.status === 'needToDo' ? "medium" : issue.status === 'inProgress' ? "warnings" : "success"}>
+                            color={ issue.status === 'needToDo' ? "warning" : issue.status === 'inProgress' ? "tertiary" : "success"}>
                             { ' ' }
                         </IonBadge>
                         <IonCardTitle class="App-task-title">{ ISSUE_TOPICS[issue.related_to] }</IonCardTitle>
@@ -71,7 +71,7 @@ class TaskCard extends Component {
                 editorIsOpen &&
                 <IonCardContent>
                     <IonBadge class="App-task-full-status"
-                        color={ issue.status === 'needToDo' ? "medium" : issue.status === 'inProgress' ? "warnings" : "success"}>
+                        color={ issue.status === 'needToDo' ? "warning" : issue.status === 'inProgress' ? "tertiary" : "success"}>
                         { ISSUE_STATUS[issue.status] }
                     </IonBadge>
                     <i className="icon ion-md-close" onClick={ this.closeEditor }></i>
